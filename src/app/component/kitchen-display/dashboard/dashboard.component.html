@@ -1,0 +1,23 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Created Till Now</th>
+      <th>Predicted</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listOrders">
+      <td>{{item.name}}</td>
+      <td>{{item.totalqunatity}}</td>
+      <td>{{item.created}}</td>
+      <td>{{item.predicted}}</td>
+      <td><button (click)="onDone(item)"> Done</button></td>
+    </tr>
+    <tr *ngIf="isEmpty">
+      <td colspan="5" style="text-align: center;">No Records Found</td>
+    </tr>
+  </tbody>
+</table>
