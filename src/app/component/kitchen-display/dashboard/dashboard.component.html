@@ -14,10 +14,10 @@
       <td>{{item.totalqunatity}}</td>
       <td>{{item.created}}</td>
       <td>{{item.predicted}}</td>
-      <td><button (click)="onDone(item)"> Done</button></td>
+      <td><button (click)="onDone(item)" class="bt btn-success"> Done</button></td>
     </tr>
     <tr *ngIf="isEmpty">
-      <td colspan="5" style="text-align: center;">No Records Found</td>
+      <td colspan="5" style="text-align: center;">No Prediction Found, Kindly add prediction</td>
     </tr>
   </tbody>
 </table>

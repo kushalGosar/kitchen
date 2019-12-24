@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedHttpService } from 'src/app/shared/shared-http.service';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quantity',
@@ -9,7 +11,8 @@ import { SharedHttpService } from 'src/app/shared/shared-http.service';
 export class QuantityComponent implements OnInit {
   listOrders: any[];
   Orders: any;
-  constructor(public http: SharedHttpService) { }
+  orderForm: FormGroup;
+  constructor(public http: SharedHttpService, public router: Router) { }
 
   ngOnInit() {
     this.getPrediction()
@@ -26,7 +29,10 @@ export class QuantityComponent implements OnInit {
     console.log(this.listOrders)
     this.Orders.dailyorders = this.listOrders
     this.http.put('/order/' + this.Orders._id, null, this.Orders).subscribe((response: any) => {
-      console.log(data)
+      this.http.successMessage();
+      this.router.navigate(['/kitchen/dashboard']);
+    }, (err) => {
+      this.http.errorMessage();
     })
   }
 }

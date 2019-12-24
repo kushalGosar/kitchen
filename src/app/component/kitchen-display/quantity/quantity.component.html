@@ -1,12 +1,22 @@
 <div class="card-group">
 
-        <form #predictionForm="ngForm" (ngSubmit)="onClickSubmit(predictionForm.value)">
-            <div class="form-group" *ngFor="let item of listOrders,let i =index">
-                <label for="exampleInputEmail1">{{item.name}}</label>
-                <input type="number" class="form-control"  name="predicted" placeholder="Enter quantity"
-                    [(ngModel)]="item.qunatity">
+    <form #orderForm="ngForm">
+        <div class="row">
+            <div class="col-md-6 position" *ngFor="let item of listOrders,let i =index">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{{item.name}}</label>
+                    <input type="number" class="form-control" name="predicted" placeholder="Enter quantity"
+                        [(ngModel)]="item.qunatity">
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    
-    </div>
+        </div>
+
+        <br>
+        <div class="btnpostion">
+            <button class="btn btn-primary" (mousedown)="onClickSubmit(orderForm.value)">
+                Submit</button> &nbsp;
+            <button (mousedown)="orderForm.reset()" class="btn btn-warning">Clear</button>
+        </div>
+    </form>
+
+</div>

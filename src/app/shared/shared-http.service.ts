@@ -25,7 +25,6 @@ export class SharedHttpService {
   post(endpoint, params = null, data) {
     const queryString = params ? this._objectToQueryString(params) : '';
     endpoint = endpoint + (queryString ? '?' + queryString : '');
-    debugger
     return this._http.post(this.url + endpoint, data, { headers: this.headers })
   }
 
@@ -43,5 +42,13 @@ export class SharedHttpService {
 
   _objectToQueryString(object) {
     return Object.keys(object).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`).join('&');
+  }
+
+  successMessage(){
+    alert('Record added Successfully');
+  }
+
+  errorMessage(msg=null){
+    alert(msg || 'Something went wrong Please try again later');
   }
 }

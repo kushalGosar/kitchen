@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   isEmpty: boolean;
   constructor(public http: SharedHttpService, public socket: SocketService) {
     this.socket.listOfData.subscribe((data: any) => {
-      if(data) {this.getPrediction()}
+      if (data) { this.getPrediction() }
     })
   }
 
