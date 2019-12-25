@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+.loader {
+    border: 16px solid #D4D4D4;
+    border-radius: 50%;
+    border-top: 16px solid #041018;
+    width: 120px;
+    background-color: transparent;
+    height: 120px;
+      position: fixed;
+      top:100px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: 99999999;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+
+
+  #awz-preloader{
+    position:fixed;
+    top: 0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgb(153, 153, 173);
+    z-index:10000;
+    opacity: 0.5;
+}

@@ -3,13 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io'
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} }
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from '../environments/environment';
+import { LoaderInterceptor } from './shared/shared.interceptor';
+import { LoaderComponent } from './component/loader/loader.component';
+
+const config: SocketIoConfig = { url: environment.url, options: {} }
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +24,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} }
     FormsModule,
     SocketIoModule.forRoot(config)
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
