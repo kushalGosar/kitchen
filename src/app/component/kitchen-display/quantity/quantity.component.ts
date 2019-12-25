@@ -12,6 +12,7 @@ export class QuantityComponent implements OnInit {
   listOrders: any[];
   Orders: any;
   orderForm: FormGroup;
+  isEmpty: boolean;
 
   constructor(public http: SharedHttpService, public router: Router) {
 
@@ -23,8 +24,14 @@ export class QuantityComponent implements OnInit {
 
   getPrediction() {
     this.http.get('/order', null).subscribe((response: any) => {
-      this.Orders = response[0]
-      this.listOrders = this.Orders.dailyorders
+      if (response.length === 0) {
+        this.isEmpty = true;
+      }
+      else {
+        this.isEmpty = false;
+        this.Orders = response[0]
+        this.listOrders = this.Orders.dailyorders
+      }
     })
   }
 

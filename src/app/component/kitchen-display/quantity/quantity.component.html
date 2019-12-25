@@ -1,4 +1,4 @@
-<div class="card-group">
+<div class="card-group" *ngIf="!isEmpty">
 
     <form #orderForm="ngForm">
         <div class="row">
@@ -22,4 +22,8 @@
         </div>
     </form>
 
+</div>
+
+<div *ngIf="isEmpty">
+    No Prediction Made
 </div>

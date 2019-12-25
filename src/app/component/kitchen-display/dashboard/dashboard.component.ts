@@ -30,8 +30,8 @@ export class DashboardComponent implements OnInit {
     this.http.get('/order', null).subscribe((response: any) => {
       if (response.length !== 0) {
         this.Orders = response[0]
-        this.listOrders = this.Orders.dailyorders;
-        this.isEmpty = false
+        this.listOrders = this.Orders.dailyorders.filter(element => element.totalqunatity > 0 || element.created>0);
+        this.listOrders.length > 0 ? this.isEmpty = false : this.isEmpty = true
       }
       else {
         this.isEmpty = true
@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onDownload() {
-    this.j2c.downloadFile(this.listOrders,'Report',['name','created','predicted'])
+    this.j2c.downloadFile(this.listOrders, 'Report', ['name', 'created', 'predicted'])
   }
 
 }
