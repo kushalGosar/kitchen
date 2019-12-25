@@ -12,7 +12,10 @@ export class QuantityComponent implements OnInit {
   listOrders: any[];
   Orders: any;
   orderForm: FormGroup;
-  constructor(public http: SharedHttpService, public router: Router) { }
+
+  constructor(public http: SharedHttpService, public router: Router) {
+
+  }
 
   ngOnInit() {
     this.getPrediction()
@@ -26,7 +29,6 @@ export class QuantityComponent implements OnInit {
   }
 
   onClickSubmit(data) {
-    console.log(this.listOrders)
     this.Orders.dailyorders = this.listOrders
     this.http.put('/order/' + this.Orders._id, null, this.Orders).subscribe((response: any) => {
       this.http.successMessage();

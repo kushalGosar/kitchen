@@ -23,7 +23,6 @@ export class PredictionComponent implements OnInit {
   }
 
   onClickSubmit(data) {
-    console.log(this.listFood)
     this.http.post('/order', null, this.listFood).subscribe((response: any) => {
       this.http.successMessage();
       this.router.navigate(['/kitchen/dashboard']);

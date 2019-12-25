@@ -13,9 +13,12 @@
 
         <br>
         <div class="btnpostion">
-            <button  class="btn btn-primary" (mousedown)="onClickSubmit(predictionForm.value)">
+            <button class="btn btn-primary" (mousedown)="onClickSubmit(predictionForm.value)">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
                 Submit</button> &nbsp;
-            <button  (mousedown)="predictionForm.reset()" class="btn btn-warning">Clear</button>
+            <button (mousedown)="predictionForm.reset()" class="btn btn-warning">
+                <i class="fa fa-times" aria-hidden="true"></i>
+                Clear</button>
         </div>
     </form>
 

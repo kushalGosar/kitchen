@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedHttpService } from 'src/app/shared/shared-http.service';
 import { SocketService } from '../../../shared/socket.service'
+import { Json2csvService } from 'src/app/shared/json2csv.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,7 +13,10 @@ export class DashboardComponent implements OnInit {
   listOrders: any[];
   Orders: any;
   isEmpty: boolean;
-  constructor(public http: SharedHttpService, public socket: SocketService) {
+  constructor(
+    public http: SharedHttpService,
+    public socket: SocketService,
+    public j2c: Json2csvService) {
     this.socket.listOfData.subscribe((data: any) => {
       if (data) { this.getPrediction() }
     })
@@ -45,6 +50,10 @@ export class DashboardComponent implements OnInit {
     else {
       this.socket.addData(obj);
     }
+  }
+
+  onDownload() {
+    this.j2c.downloadFile(this.listOrders,'Report',['name','created','predicted'])
   }
 
 }

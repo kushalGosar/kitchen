@@ -1,0 +1,12 @@
+{
+    "apiendpoint": {
+        "food": {
+            "get": "/food"
+        },
+        "order": {
+            "get": "/order",
+            "post": "/order",
+            "put": "/order/"
+        }
+    }
+}

@@ -14,8 +14,11 @@
         <br>
         <div class="btnpostion">
             <button class="btn btn-primary" (mousedown)="onClickSubmit(orderForm.value)">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
                 Submit</button> &nbsp;
-            <button (mousedown)="orderForm.reset()" class="btn btn-warning">Clear</button>
+            <button (mousedown)="orderForm.reset()" class="btn btn-warning">
+                <i class="fa fa-times" aria-hidden="true"></i>
+                Clear</button>
         </div>
     </form>
 
